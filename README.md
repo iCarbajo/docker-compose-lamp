@@ -11,12 +11,12 @@ A basic LAMP stack environment built using Docker Compose. It consists of the fo
 * Redis
 
 As of now, we have different branches for different PHP versions. Use appropriate branch as per your php version needed:
-* [5.4.x](https://github.com/sprintcube/docker-compose-lamp/tree/5.4.x)
-* [5.6.x](https://github.com/sprintcube/docker-compose-lamp/tree/5.6.x)
-* [7.1.x](https://github.com/sprintcube/docker-compose-lamp/tree/7.1.x)
-* [7.2.x](https://github.com/sprintcube/docker-compose-lamp/tree/7.2.x)
-* [7.3.x](https://github.com/sprintcube/docker-compose-lamp/tree/7.3.x)
-* [7.4.x](https://github.com/sprintcube/docker-compose-lamp/tree/7.4.x)
+* [5.4.x](https://github.com/iCarbajo/docker-compose-lamp/tree/5.4.x)
+* [5.6.x](https://github.com/iCarbajo/docker-compose-lamp/tree/5.6.x)
+* [7.1.x](https://github.com/iCarbajo/docker-compose-lamp/tree/7.1.x)
+* [7.2.x](https://github.com/iCarbajo/docker-compose-lamp/tree/7.2.x)
+* [7.3.x](https://github.com/iCarbajo/docker-compose-lamp/tree/7.3.x)
+* [7.4.x](https://github.com/iCarbajo/docker-compose-lamp/tree/7.4.x)
 
 ## Installation
 
@@ -24,7 +24,7 @@ Clone this repository on your local computer and checkout the appropriate branch
 Run the `docker-compose up -d`.
 
 ```shell
-git clone https://github.com/sprintcube/docker-compose-lamp.git
+git clone https://github.com/iCarbajo/docker-compose-lamp.git
 cd docker-compose-lamp/
 git fetch --all
 git checkout 7.4.x
