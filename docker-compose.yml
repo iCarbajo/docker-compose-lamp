@@ -1,10 +1,10 @@
 version: "3"
 
 services:
-  webserver:
+  dev-server:
     build: 
-      context: ./bin/webserver
-    container_name: '7.4.x-webserver'
+      context: ./bin/dev-server
+    container_name: 'dev-server'
     restart: 'always'
     ports:
       - "${HOST_MACHINE_UNSECURE_HOST_PORT}:80"
@@ -14,7 +14,7 @@ services:
     volumes: 
       - ${DOCUMENT_ROOT-./www}:/var/www/html
       - ${PHP_INI-./config/php/php.ini}:/usr/local/etc/php/php.ini
-      - ${VHOSTS_DIR-./config/vhosts}:/etc/apache2/sites-enabled
+      - ${VHOSTS_DIR-./config/apache2/sites-enabled}:/etc/apache2/sites-enabled
       - ${LOG_DIR-./logs/apache2}:/var/log/apache2
   mysql:
     build:
@@ -33,7 +33,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: 'sc-phpmyadmin'
+    container_name: 'phpmyadmin'
     links:
       - mysql
     environment:
@@ -49,7 +49,24 @@ services:
     volumes: 
       - /sessions
   redis:
-    container_name: 'sc-redis'
+    container_name: 'redis'
     image: redis:latest
     ports:
       - "${HOST_MACHINE_REDIS_PORT}:6379"
+  samba:
+    container_name: samba
+    build: ./bin/samba
+    ports:
+      - "137:137/udp"
+      - "138:138/udp"
+      - "139:139/tcp"
+      - "445:445/tcp"
+    read_only: false
+    tmpfs:
+      - /tmp
+    restart: always
+    stdin_open: true
+    tty: true
+    volumes:
+      - /home/icarbajoapps/repos:/mnt/apps:z
+    command: '-u "${SAMBA_USER};${SAMBA_PASS}"'

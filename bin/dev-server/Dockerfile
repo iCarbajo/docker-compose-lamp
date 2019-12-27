@@ -48,6 +48,8 @@ RUN apt-get -y update && \
     rm -rf /var/lib/apt/lists/* && \
     docker-php-ext-configure gd
 
+RUN adduser --disabled-password --gecos "" icarbajoapps
+
 # Enable apache modules
 RUN a2enmod rewrite headers
 
